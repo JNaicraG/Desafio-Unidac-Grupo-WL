@@ -1,10 +1,20 @@
 package com.unidac.apirest.colaborador;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public record DadosCadastroColaborador(
-    String nome,
+    @NotBlank
+   String nome,
+    @NotBlank
     String cpf,
-    Date data
+    @NotEmpty
+    @NotNull
+    LocalDate data
     ){
 }
+

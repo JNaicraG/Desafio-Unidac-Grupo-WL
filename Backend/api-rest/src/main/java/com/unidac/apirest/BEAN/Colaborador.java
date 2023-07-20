@@ -1,18 +1,33 @@
 package com.unidac.apirest.BEAN;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.unidac.apirest.colaborador.DadosCadastroColaborador;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of)
+@EqualsAndHashCode(of = "id")
 public class Colaborador {
-    String nome;
-    String cpf;
-    Date data;
+
+    private Long id;
+    @NotBlank
+    private String nome;
+    @NotBlank
+    private String cpf;
+    @NotNull
+    @NotEmpty
+    private LocalDate data;
+
+    public Colaborador(DadosCadastroColaborador dados){
+        this.nome = dados.nome();
+        this.cpf = dados.cpf();
+        this.data = dados.data();
+    }
+
 }
