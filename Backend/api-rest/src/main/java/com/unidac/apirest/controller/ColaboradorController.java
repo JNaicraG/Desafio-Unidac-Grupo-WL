@@ -2,6 +2,7 @@ package com.unidac.apirest.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.unidac.apirest.BEAN.Colaborador;
+import com.unidac.apirest.colaborador.DadosAlterarColaborador;
 import com.unidac.apirest.colaborador.DadosCadastroColaborador;
 import com.unidac.apirest.dao.ColaboradorDAO;
 import jakarta.validation.Valid;
@@ -16,6 +17,13 @@ import java.util.Collection;
 public class ColaboradorController {
 
     private ColaboradorDAO dao = new ColaboradorDAO();
+
+    @GetMapping("/{id}")
+    public Colaborador BuscaId(@PathVariable Long id) throws SQLException {
+        Colaborador colab = new Colaborador();
+        colab.setId(id);
+        return dao.buscaID(colab);
+    }
 
     @GetMapping
     public Collection<Colaborador> ListarColaboradores(){
@@ -40,25 +48,41 @@ public class ColaboradorController {
 
         //Cadastrar
         try {
-            System.out.println("AAAAAAAA");
-            System.out.println(dados);
             if (dao.insere(new Colaborador(dados))) {
-                System.out.println("Dados inseridos?");
                 return ResponseEntity.ok("Sucesso!");
             }
             return ResponseEntity.badRequest().body("Erro no cadastro!");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
 
     }
 
-    /*
-    @PutMapping
-    public ResponseEntity<String> AtualizarColaborador(){
-        return ResponseEntity.ok("Sucesso");
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> DeletarColaborador(@RequestBody @PathVariable Long id ){
+        try {
+            Colaborador colab = new Colaborador();
+            colab.setId(id);
+            if (dao.remove(colab)) {
+                return ResponseEntity.ok("Sucesso!");
+            }
+            return ResponseEntity.badRequest().body("Não excluído!");
+
+        } catch (SQLException ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
-     */
+
+    @PutMapping
+    public ResponseEntity<String> AlterarColaborador(@RequestBody @Valid DadosAlterarColaborador dados){
+        try{
+            if(dao.altera(new Colaborador(dados))){
+                return ResponseEntity.ok("Sucesso!");
+            }
+            return ResponseEntity.badRequest().body("Não Alterado!");
+        } catch (SQLException ex){
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
 
 }

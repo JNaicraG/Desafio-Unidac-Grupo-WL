@@ -1,6 +1,7 @@
 package com.unidac.apirest.BEAN;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.unidac.apirest.colaborador.DadosAlterarColaborador;
 import com.unidac.apirest.colaborador.DadosCadastroColaborador;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -28,4 +29,9 @@ public class Colaborador {
         this.cpf = dados.cpf();
     }
 
+    public Colaborador(DadosAlterarColaborador dados){
+        this.id = dados.id();
+        this.nome = dados.nome();
+        this.cpf = dados.cpf();
+    }
 }

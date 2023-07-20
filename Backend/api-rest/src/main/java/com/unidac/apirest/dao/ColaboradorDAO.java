@@ -34,17 +34,54 @@ public class ColaboradorDAO implements DAO<Colaborador>{
 
     @Override
     public boolean remove(Colaborador obj) throws SQLException {
-        return false;
+        String sql = "DELETE FROM colaboradores WHERE id = ?";
+        Banco.conectar();
+        pst = Banco.obterConexao().prepareStatement(sql);
+        pst.setLong(1,obj.getId());
+        int res = pst.executeUpdate();
+        Banco.desconectar();
+
+        return res!= 0;
     }
 
     @Override
     public boolean altera(Colaborador obj) throws SQLException {
-        return false;
+        String sql = "UPDATE colaboradores SET nome=?, cpf =? "
+                    + "WHERE id = ?";
+
+        Banco.conectar();
+        pst = Banco.obterConexao().prepareStatement(sql);
+        pst.setString(1,obj.getNome());
+        pst.setString(2,obj.getCpf());
+        pst.setLong(3,obj.getId());
+        int res = pst.executeUpdate();
+        Banco.desconectar();
+
+
+        return res !=0;
     }
 
     @Override
     public Colaborador buscaID(Colaborador obj) throws SQLException {
-        return null;
+        String sql = "SELECT * FROM colaboradores " +
+                        "WHERE id=?";
+
+        Banco.conectar();
+        pst = Banco.obterConexao().prepareStatement(sql);
+        pst.setLong(1, obj.getId());
+        rs = pst.executeQuery();
+        if(rs.next()){
+            colaborador = new Colaborador();
+            colaborador.setNome(rs.getString("nome"));
+            colaborador.setCpf(rs.getString("cpf"));
+            colaborador.setId(rs.getLong("id"));
+        } else {
+            colaborador = null;
+        }
+
+        Banco.desconectar();
+
+        return colaborador;
     }
 
     @Override
