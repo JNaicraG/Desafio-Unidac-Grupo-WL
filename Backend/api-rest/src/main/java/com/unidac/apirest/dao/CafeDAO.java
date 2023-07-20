@@ -14,6 +14,7 @@ public class CafeDAO implements DAO<Cafe>{
     private Cafe cafe;
     @Override
     public boolean insere(Cafe obj) throws SQLException {
+        //Inserção no café
         String sql = "INSERT INTO cafe (data) "
                 + " VALUES (?)";
         Banco.conectar();
@@ -21,11 +22,15 @@ public class CafeDAO implements DAO<Cafe>{
         pst.setDate(1, java.sql.Date.valueOf(obj.getData()));
         int res = pst.executeUpdate();
 
+        //Pegar ID gerado
         rs = pst.getGeneratedKeys();
         if(rs.next()){
             obj.setId(rs.getLong(1));
         }
-        System.out.println("ID: " + obj.getId());
+
+        //Inserir no opcaoCafe
+
+
         Banco.desconectar();
 
         return res!=0;
