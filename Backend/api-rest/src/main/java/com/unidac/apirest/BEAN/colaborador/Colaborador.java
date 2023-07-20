@@ -1,15 +1,9 @@
-package com.unidac.apirest.BEAN;
+package com.unidac.apirest.BEAN.colaborador;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.unidac.apirest.colaborador.DadosAlterarColaborador;
-import com.unidac.apirest.colaborador.DadosCadastroColaborador;
+import com.unidac.apirest.BEAN.colaborador.DadosAlterarColaborador;
+import com.unidac.apirest.BEAN.colaborador.DadosCadastroColaborador;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter

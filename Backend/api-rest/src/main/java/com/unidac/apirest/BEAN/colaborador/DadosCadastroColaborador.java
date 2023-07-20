@@ -1,4 +1,4 @@
-package com.unidac.apirest.colaborador;
+package com.unidac.apirest.BEAN.colaborador;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;

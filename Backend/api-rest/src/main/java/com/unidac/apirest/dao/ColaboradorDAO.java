@@ -1,12 +1,9 @@
 package com.unidac.apirest.dao;
 
-import com.unidac.apirest.BEAN.Colaborador;
+import com.unidac.apirest.BEAN.colaborador.Colaborador;
 import com.unidac.apirest.persistencia.Banco;
-import jakarta.validation.constraints.NotBlank;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 

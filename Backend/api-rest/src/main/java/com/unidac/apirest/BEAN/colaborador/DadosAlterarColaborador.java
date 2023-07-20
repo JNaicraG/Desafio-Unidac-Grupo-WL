@@ -1,13 +1,16 @@
-package com.unidac.apirest.colaborador;
+package com.unidac.apirest.BEAN.colaborador;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
-
-public record DadosListagemColaborador(
+public record DadosAlterarColaborador(
+        @NotNull
+       @NotEmpty
+        Long id,
+        @NotBlank
         String nome,
+        @NotBlank
         String cpf
 ) {
 }

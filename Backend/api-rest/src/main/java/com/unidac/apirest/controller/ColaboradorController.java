@@ -1,9 +1,8 @@
 package com.unidac.apirest.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.unidac.apirest.BEAN.Colaborador;
-import com.unidac.apirest.colaborador.DadosAlterarColaborador;
-import com.unidac.apirest.colaborador.DadosCadastroColaborador;
+import com.unidac.apirest.BEAN.colaborador.Colaborador;
+import com.unidac.apirest.BEAN.colaborador.DadosAlterarColaborador;
+import com.unidac.apirest.BEAN.colaborador.DadosCadastroColaborador;
 import com.unidac.apirest.dao.ColaboradorDAO;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
