@@ -1,5 +1,6 @@
 package com.unidac.apirest.BEAN;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.unidac.apirest.colaborador.DadosCadastroColaborador;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -20,14 +22,10 @@ public class Colaborador {
     private String nome;
     @NotBlank
     private String cpf;
-    @NotNull
-    @NotEmpty
-    private LocalDate data;
 
     public Colaborador(DadosCadastroColaborador dados){
         this.nome = dados.nome();
         this.cpf = dados.cpf();
-        this.data = dados.data();
     }
 
 }

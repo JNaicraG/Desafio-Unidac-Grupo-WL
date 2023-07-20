@@ -14,7 +14,7 @@ public class Banco {
     static { //"""""cobstrutor"""""" static, igual o Start() no Unity
         //mysql e mariaDB
 
-        bancoDados = "Desafio_Unidac";
+        bancoDados = "desafio_unidac";
         usuario = "root";
         senha = "4474";
         servidor = "localhost";
