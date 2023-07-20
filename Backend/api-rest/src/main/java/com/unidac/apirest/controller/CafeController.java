@@ -18,15 +18,22 @@ public class CafeController {
     CafeDAO dao = new CafeDAO();
 
     @PostMapping
-    public ResponseEntity<String> CadastrarCafe(@RequestBody@Valid DadosCadastroCafe dados){
+    public ResponseEntity<String> CadastrarCafe(@RequestBody@Valid DadosCadastroCafe dados) throws SQLException {
+        if (dao.insere(new Cafe(dados))) {
+            //Pegar id para integrar a opcaoCafe
+            return ResponseEntity.ok("Sucesso");
+        }
+        return ResponseEntity.badRequest().body("Erro ao inserir dados");
+        /*
         try{
-            if(dao.insere(new Cafe(dados))){
+            System.out.println("Data: " + new Cafe(dados).getData());
+            if (dao.insere(new Cafe(dados))) {
                 //Pegar id para integrar a opcaoCafe
                 return ResponseEntity.ok("Sucesso");
             }
             return ResponseEntity.badRequest().body("Erro ao inserir dados");
         } catch (SQLException ex){
             return ResponseEntity.badRequest().body(ex.getMessage());
-        }
+        }*/
     }
 }

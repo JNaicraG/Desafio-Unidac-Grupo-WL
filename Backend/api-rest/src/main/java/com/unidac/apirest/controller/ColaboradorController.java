@@ -25,15 +25,18 @@ public class ColaboradorController {
     }
 
     @GetMapping
-    public Collection<Colaborador> ListarColaboradores(){
+    public Collection<Colaborador> ListarColaboradores() throws SQLException {
+        return dao.lista("");
+        /*
         try {
             return dao.lista("");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        */
     }
     @PostMapping
-    public ResponseEntity<String> CadastrarColaborador(@RequestBody @Valid DadosCadastroColaborador dados){
+    public ResponseEntity<String> CadastrarColaborador(@RequestBody @Valid DadosCadastroColaborador dados) throws SQLException {
         /*
         ObjectMapper objectMapper = new ObjectMapper();
         DadosCadastroColaborador dados = objectMapper.readValue(jsonString, DadosCadastroColaborador.class);
@@ -46,34 +49,32 @@ public class ColaboradorController {
         */
 
         //Cadastrar
-        try {
-            if (dao.insere(new Colaborador(dados))) {
-                return ResponseEntity.ok("Sucesso!");
-            }
-            return ResponseEntity.badRequest().body("Erro no cadastro!");
-        } catch (SQLException ex) {
-            return ResponseEntity.badRequest().body(ex.getMessage());
+        if (dao.insere(new Colaborador(dados))) {
+            return ResponseEntity.ok("Sucesso!");
         }
-
+        return ResponseEntity.badRequest().body("Não excluído!");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> DeletarColaborador(@RequestBody @PathVariable Long id ){
-        try {
+    public ResponseEntity<String> DeletarColaborador(@RequestBody @PathVariable Long id )  throws SQLException {
+
             Colaborador colab = new Colaborador();
             colab.setId(id);
             if (dao.remove(colab)) {
                 return ResponseEntity.ok("Sucesso!");
             }
             return ResponseEntity.badRequest().body("Não excluído!");
-
-        } catch (SQLException ex){
-            return ResponseEntity.badRequest().body(ex.getMessage());
-        }
     }
 
     @PutMapping
-    public ResponseEntity<String> AlterarColaborador(@RequestBody @Valid DadosAlterarColaborador dados){
+    public ResponseEntity<String> AlterarColaborador(@RequestBody @Valid DadosAlterarColaborador dados) throws SQLException {
+
+        if(dao.altera(new Colaborador(dados))){
+            return ResponseEntity.ok("Sucesso!");
+        }
+        return ResponseEntity.badRequest().body("Não Alterado!");
+
+        /*
         try{
             if(dao.altera(new Colaborador(dados))){
                 return ResponseEntity.ok("Sucesso!");
@@ -82,6 +83,8 @@ public class ColaboradorController {
         } catch (SQLException ex){
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
+
+         */
     }
 
 }
