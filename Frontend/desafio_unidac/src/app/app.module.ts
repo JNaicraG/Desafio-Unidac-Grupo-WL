@@ -8,13 +8,19 @@ import { ListarColaboradoresComponent } from './components/colaboradores/listar-
 import { CardColaboradorComponent } from './components/colaboradores/card-colaborador/card-colaborador.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CriarColaboradorComponent } from './components/colaboradores/criar-colaborador/criar-colaborador.component';
+import{ NgxMaskDirective, NgxMaskPipe } from 'ngx-mask'
+import { ToastrModule } from 'ngx-toastr';
+import { EditarColaboradorComponent } from './components/colaboradores/editar-colaborador/editar-colaborador.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListarColaboradoresComponent,
-    CardColaboradorComponent
+    CardColaboradorComponent,
+    CriarColaboradorComponent,
+    EditarColaboradorComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +28,11 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    ToastrModule.forRoot()
   ],
   providers: [ColaboradorService],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+<h1>Cadastrar Colaborador</h1>
+<form [formGroup]="formGroup">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <span class="container_required">(Campo Obrigatório)</span>
+      <input type="text" class="form-control" id="nome" formControlName="nome">
+    </div>
+    <div class="mb-3">
+      <label for="cpf" class="form-label">CPF</label>
+      <span class="container_required">(Campo Obrigatório)</span>
+      <input type="text" class="form-control" id="cpf" formControlName="cpf"/>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="salvar()" >Cadastrar</button>
+    <button type="submit" class="btn btn-primary" routerLink="/listar-colaboradores">Cancelar</button>
+</form>

@@ -32,7 +32,7 @@ public class CafeController {
     OpcaoCafeDAO opcaoDAO = new OpcaoCafeDAO();
 
     @PostMapping
-    public ResponseEntity<String> CadastrarCafe(@RequestBody@Valid String json) throws SQLException, ParseException, JsonProcessingException {
+    public ResponseEntity<Boolean> CadastrarCafe(@RequestBody@Valid String json) throws SQLException, ParseException, JsonProcessingException {
         //Mapeamento de dados e do Array Json
         System.out.println(json);
         Cafe cafe = ParseJSON(json);
@@ -55,9 +55,9 @@ public class CafeController {
                 }
             });
 
-            return ResponseEntity.ok("Sucesso");
+            return ResponseEntity.ok(true);
         }
-        return ResponseEntity.badRequest().body("Erro ao inserir dados");
+        return ResponseEntity.badRequest().body(false);
     }
 
     @GetMapping
@@ -76,12 +76,12 @@ public class CafeController {
     }
 
     @PatchMapping
-    public ResponseEntity<String> AlterarCafeLevou(@RequestBody@Valid OpcaoCafe dados) throws SQLException {
+    public ResponseEntity<Boolean> AlterarCafeLevou(@RequestBody@Valid OpcaoCafe dados) throws SQLException {
         System.out.println(dados);
         if(opcaoDAO.altera(dados)){
-            return ResponseEntity.ok("Sucesso");
+            return ResponseEntity.ok(true);
         }
-        return ResponseEntity.badRequest().body("Erro");
+        return ResponseEntity.badRequest().body(false);
     }
 
     private Cafe ParseJSON(String json) throws JsonProcessingException {

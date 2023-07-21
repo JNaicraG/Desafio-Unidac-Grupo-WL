@@ -1,12 +1,29 @@
-<header>Colaboradores</header>
+<header class="d-flex">
+    <h1 class="mt-2">Colaboradores</h1>
+    <ul class="d-flex ">
+        <li><div class="mt-3">
+            <button  class="btn btn-primary"
+            routerLink="/criar-colaborador">Cadastrar Colaborador</button>
+        </div></li>
+        <li><div class="mt-3">
+            <button  class="btn btn-primary"
+            routerLink="/criar-cafe">Adicionar Café</button>
+        </div></li>
+        <li><div class="mt-3">
+            <button  class="btn btn-primary"
+            routerLink="/listar-cafe">Ver Cafés Marcados</button>
+        </div></li>
+    </ul>
+</header>
+
 <section *ngIf="listaColaboradores.length>0, else semColaboradores">
-    <div *ngFor="let colaborador of listaColaboradores">
+    <div *ngFor="let colaborador of listaColaboradores" class="m-3">
         <app-card-colaborador [colaborador]="colaborador"></app-card-colaborador>
     </div>
 </section>
 
 <ng-template #semColaboradores>
-    <div>
+    <div >
         <p>Nenhum colaborador cadastrado.</p>
     </div>
 </ng-template>

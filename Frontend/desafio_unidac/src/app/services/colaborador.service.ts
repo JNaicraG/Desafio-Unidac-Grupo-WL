@@ -1,4 +1,4 @@
-import {Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {Colaborador } from '../models/colaborador';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -16,5 +16,27 @@ export class ColaboradorService {
   listar():Observable<Colaborador[]>{
     return this.http.get<Colaborador[]>(this.API)
   }
+
+  criar(colaborador:Colaborador):Observable<Colaborador>{
+    return this.http.post<Colaborador>(this.API,colaborador);
+  }
+
+
+  excluir(id:number):Observable<Colaborador>{
+    const url = `${this.API}/${id}`
+    return this.http.delete<Colaborador>(url);
+  }
+
+  buscarID(id:number):Observable<Colaborador>{
+    const url = `${this.API}/${id}`
+    return this.http.get<Colaborador>(url);
+  }
+
+  editar(colaborador:Colaborador):Observable<Colaborador>{
+    const url = `${this.API}/${colaborador.id}`
+    return this.http.put<Colaborador>(url,colaborador);
+  }
+
+  
 
 }
