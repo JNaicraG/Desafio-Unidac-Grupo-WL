@@ -1,0 +1,19 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{colaborador.nome}}</td>
+                <td>{{colaborador.cpf}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button routerLink="/colaborador/editar-colaborador/{{colaborador.id}}">Editar</button>
+    </div>
+</div>
