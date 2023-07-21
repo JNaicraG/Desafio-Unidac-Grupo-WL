@@ -22,18 +22,18 @@ export class ColaboradorService {
   }
 
 
-  excluir(id:number):Observable<Colaborador>{
+  excluir(id:Number):Observable<Colaborador>{
     const url = `${this.API}/${id}`
     return this.http.delete<Colaborador>(url);
   }
 
-  buscarID(id:number):Observable<Colaborador>{
+  buscarID(id:Number):Observable<Colaborador>{
     const url = `${this.API}/${id}`
     return this.http.get<Colaborador>(url);
   }
 
   editar(colaborador:Colaborador):Observable<Colaborador>{
-    const url = `${this.API}/${colaborador.id}`
+    const url = `${this.API}`
     return this.http.put<Colaborador>(url,colaborador);
   }
 

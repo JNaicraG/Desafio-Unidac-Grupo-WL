@@ -13,6 +13,7 @@ import { CriarColaboradorComponent } from './components/colaboradores/criar-cola
 import{ NgxMaskDirective, NgxMaskPipe } from 'ngx-mask'
 import { ToastrModule } from 'ngx-toastr';
 import { EditarColaboradorComponent } from './components/colaboradores/editar-colaborador/editar-colaborador.component';
+import { ConfirmacaoModalComponent } from './components/colaboradores/confirmacao-modal/confirmacao-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditarColaboradorComponent } from './components/colaboradores/editar-co
     ListarColaboradoresComponent,
     CardColaboradorComponent,
     CriarColaboradorComponent,
-    EditarColaboradorComponent
+    EditarColaboradorComponent,
+    ConfirmacaoModalComponent
   ],
   imports: [
     CommonModule,

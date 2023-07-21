@@ -40,9 +40,9 @@ export class EditarColaboradorComponent implements OnInit{
 
   confirmarDados(){
     const arr = this.listaColaboradores.filter(dados => dados.cpf === this.formGroup.get('cpf')?.value) ;
-    if(arr.length===1)
-      return 1
-    return 0
+    if(arr.length==1)
+      return 0
+    return 1
   }
 
   editar(){
