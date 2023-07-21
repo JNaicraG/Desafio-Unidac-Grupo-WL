@@ -26,7 +26,7 @@ public class Banco {
      * @throws SQLException
      */
     public static void conectar() throws SQLException{
-        String url = "jdbc:mariadb://" + servidor +
+        String url = "jdbc:mysql://" + servidor +
                 ":" + porta + "/" + bancoDados;
 
         conexao = DriverManager.getConnection(url,
