@@ -1,6 +1,6 @@
 <header>Colaboradores</header>
 <section *ngIf="listaColaboradores.length>0, else semColaboradores">
-    <div *ngFor="let colaborador in listaColaboradores">
+    <div *ngFor="let colaborador of listaColaboradores">
         <app-card-colaborador [colaborador]="colaborador"></app-card-colaborador>
     </div>
 </section>

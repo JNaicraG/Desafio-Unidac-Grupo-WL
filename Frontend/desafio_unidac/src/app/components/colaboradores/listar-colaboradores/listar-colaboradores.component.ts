@@ -21,7 +21,6 @@ export class ListarColaboradoresComponent implements OnInit{
     this.service.listar().subscribe((listaColaboradores) => {
         this.listaColaboradores = listaColaboradores
     })
-    console.log("Lista: " + this.listaColaboradores);
   }
 
 }
