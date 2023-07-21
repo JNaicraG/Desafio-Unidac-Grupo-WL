@@ -14,11 +14,13 @@ public class Banco {
     static { //"""""cobstrutor"""""" static, igual o Start() no Unity
         //mysql e mariaDB
 
+        /*
         bancoDados = "desafio_unidac";
         usuario = "root";
         senha = "4474";
         servidor = "localhost";
         porta = 3306;
+        */
     }
 
     /**
@@ -26,8 +28,9 @@ public class Banco {
      * @throws SQLException
      */
     public static void conectar() throws SQLException{
-        String url = "jdbc:mysql://" + servidor +
-                ":" + porta + "/" + bancoDados;
+        String url = " mysql://root:AdShHRqNUGVrzv25lQ8G@containers-us-west-91.railway.app:6814/railway";
+        // String url = "jdbc:mysql://" + servidor +
+                //":" + porta + "/" + bancoDados;
 
         conexao = DriverManager.getConnection(url,
                 usuario, senha);
