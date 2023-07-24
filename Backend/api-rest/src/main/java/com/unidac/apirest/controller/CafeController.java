@@ -34,19 +34,20 @@ public class CafeController {
     @PostMapping
     public ResponseEntity<Boolean> CadastrarCafe(@RequestBody@Valid String json) throws SQLException, ParseException, JsonProcessingException {
         //Mapeamento de dados e do Array Json
-        System.out.println(json);
+        System.out.println("Json: " + json);
         Cafe cafe = ParseJSON(json);
 
 
         System.out.println(("Convertido"));
-        System.out.println(cafe.getData() + " aaaaa " + cafe.getOpcoes());
+        System.out.println(cafe.getData() + " aaaaa " + cafe.getOpcoesCafe());
         //DadosCadastroCafe dados
         if (dao.insere(cafe)) {
             //Pegar id para integrar a OpcaoCafe
             ArrayList<Cafe> lista = (ArrayList<Cafe>) dao.lista("");
 
             Cafe obj = lista.get(lista.size()-1);
-            cafe.getOpcoes().forEach(opcao ->{
+            cafe.getOpcoesCafe().forEach(opcao ->{
+                System.out.println("Cafe: " + opcao);
                 opcao.setIdCafe(obj.getId());
                 try {
                     Boolean res = opcaoDAO.insere(opcao);
@@ -70,7 +71,7 @@ public class CafeController {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            cafe.setOpcoes((ArrayList<OpcaoCafe>) opCafes);
+            cafe.setOpcoesCafe((ArrayList<OpcaoCafe>) opCafes);
         });
         return cafes;
     }

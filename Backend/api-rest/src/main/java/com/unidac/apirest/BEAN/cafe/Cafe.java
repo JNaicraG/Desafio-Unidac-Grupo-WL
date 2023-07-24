@@ -18,16 +18,16 @@ import java.util.ArrayList;
 public class Cafe {
     Long id;
     LocalDate data;
-    ArrayList<OpcaoCafe> opcoes;
+    ArrayList<OpcaoCafe> opcoesCafe;
     public Cafe(DadosCadastroCafe dados) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.data = LocalDate.parse(dados.data(),formatter);
-        this.opcoes = new ArrayList<OpcaoCafe>();
+        this.opcoesCafe = new ArrayList<OpcaoCafe>();
         //Adicionar loop do dto para a bean
         //opcoes.add(new OpcaoCafe(dados.opcoesCafe()));
         for(int i =0; i<dados.opcoesCafe().size()-1 ; i++){
             DadosOpcoes dOp = dados.opcoesCafe().get(i);
-            this.opcoes.add(new OpcaoCafe(dOp));
+            this.opcoesCafe.add(new OpcaoCafe(dOp));
         }
         /*
         opcoes.forEach( OpcaoCafe -> {
@@ -37,8 +37,8 @@ public class Cafe {
          */
     }
 
-    public Cafe(LocalDate data, ArrayList<OpcaoCafe> opcoes) {
+    public Cafe(LocalDate data, ArrayList<OpcaoCafe> opcoesCafe) {
         this.data = data;
-        this.opcoes = opcoes;
+        this.opcoesCafe = opcoesCafe;
     }
     }
