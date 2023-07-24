@@ -15,7 +15,7 @@ public class ColaboradorDAO implements DAO<Colaborador>{
 
     @Override
     public boolean insere(Colaborador obj) throws SQLException {
-        String sql = "INSERT INTO Colaboradores (nome, cpf) "
+        String sql = "INSERT INTO colaboradores (nome, cpf) "
                 + " VALUES (?, ?)";
         Banco.conectar();
         pst = Banco.obterConexao().prepareStatement(sql);

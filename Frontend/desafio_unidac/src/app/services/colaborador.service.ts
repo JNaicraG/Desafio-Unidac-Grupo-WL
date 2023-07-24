@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ColaboradorService {
 
-  private readonly API = 'http://127.0.0.1:8080/colaboradores';
+  private readonly API = 'https://backenddesafio-unidacrest-api-production.up.railway.app/colaboradores';
 
   constructor(private http:HttpClient) { 
   }
